@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: black;
+}
+
+footer{
+  left: 0;
+  bottom: 0;
+  background-color: #5E3E80;
+  text-align: center;
+}
