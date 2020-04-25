@@ -6,9 +6,13 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   mode: "development",
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       {
@@ -23,18 +27,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: "/node_modules/",
         use: [
           {
             loader: "babel-loader",
             options: {
-              presets:["@babel/preset-env"]
+              presets:["@babel/preset-env", "@babel/preset-react"]
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=25000'
       }
     ]
+  },
+  resolve: {
+    extensions: ['*','.js','jsx']
   },
   plugins:[
     new webpack.ProvidePlugin({

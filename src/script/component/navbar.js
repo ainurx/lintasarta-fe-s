@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <header>
+class NavBar extends HTMLElement{
+  constructor(){
+    super();
+    this.shadowDOM = this.attachShadow({mode: "open"});
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    this.shadowDOM.innerHTML= `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Carifilm</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,27 +32,8 @@
         </form>
       </div>
     </nav>
-  </header>
+    `
+  }
+}
 
-  <main>
-  </main>
-  
-  
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="" alt="" srcset="">
-          <p>@ainurx_78</p>
-        </div>
-        <div class="col-md-6">
-          <img src="" alt="" srcset="">
-          <p>ainurx</p>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <p>&copy;ainur rahmat</p>
-  </footer>
-<script src="bundle.js"></script></body>
-</html>
+customElements.define("nav-bar", NavBar);
