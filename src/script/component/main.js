@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from"react";
+import React, { Component, useReducer } from"react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,12 @@ import {
 import Jumbotron from "./jumbotron";
 import MovieList from "./movieList";
 import {MovieSearch} from"./MovieSearch";
-//import Movie from"./Movie";
+import Movie from"./Movie";
+
+export const MovieContext = React.createContext();
+
+const MovieProvider = MovieContext.Provider;
+const MovieConusmer = MovieContext.Consumer;
 
 class Main extends Component{
   constructor(props){
@@ -31,6 +36,8 @@ class Main extends Component{
   }
   
   render(){
+    //const [state, dispatch] = useReducer(reducer, id);
+
     return (
       <Router>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
